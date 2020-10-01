@@ -8,6 +8,8 @@
   - You can install Django with pip: run the command -> pip install Django 
   - pip install python-dotenv
   - pip install django-bootstrap4
+  - add a .env file at the root directory and paste secret key in variable 
+   SECRET_KEY=
 
 
  Useful Django commands 
