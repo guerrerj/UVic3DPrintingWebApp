@@ -6,6 +6,8 @@
  Prerequisites 
   - Need to have python installed (preferrabley version 3.8 or greater) 
   - You can install Django with pip: run the command -> pip install Django 
+  - pip install python-dotenv
+  - pip install django-bootstrap4
 
 
  Useful Django commands 
