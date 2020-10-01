@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block pageContent %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <b>Job Id</b>
+            </div>
+            <div class="col-12 col-md-3">
+                <b>3D File</b>
+            </div>
+            <div class="col-12 col-md-2">
+                <b>Cost</b>
+            </div>
+            <div class="col-12 col-md-2">
+                <b>Payment Complete</b>
+            </div>
+            <div class="col-12 col-md-2">
+                <b>Job Completed</b>
+            </div>
+        </div>
+        {% for job in jobs %}
+            <div class="row">
+                <div class="col-12 col-md-3">
+                    {{job.jobId}}
+                </div>
+                <div class="col-12 col-md-3">
+                    {{job.fileName}}
+                </div>
+                <div class="col-12 col-md-2">
+                    {{job.cost}}
+                </div>
+                <div class="col-12 col-md-2">
+                    {{job.paymentCompleted}}
+                </div>
+                <div class="col-12 col-md-2">
+                    {{job.jobCompleted}}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
