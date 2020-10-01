@@ -32,13 +32,16 @@
 # These two files are the ones we will mostly modify
 
 
-# The other two folders/apps login and JobTracker were created with python manage.py startapp appName
+# The other two folders/apps Login and JobTracker were created with python manage.py startapp appName
 # They represent different functionalities of the web app with their associated models(database data) and
 # views(apis) and templates(html) 
 
 # Each app also has a model file which contains the database classes (these classes are mapped to a 
 # sql database in sqlite3) Then these models are captured by the views.py (apis) to return the 
 # required html in the templates folder to the front end 
+
+# you can also run -> python manage.py migrate    --> to update the schemas for the databases after 
+# you update the models
 
 # I also installed bootstrap 4 which has to be loaded to each new html (see base.html for e.g) 
 # which can be used to format the html 

@@ -1,6 +1,6 @@
 from django.db import models
-from login.models import Users
 from django.urls import reverse
+from Login.models import Users
 
 class Jobs(models.Model):
     jobId            = models.AutoField(primary_key=True)

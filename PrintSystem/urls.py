@@ -15,17 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-#from rest_framework import routers 
 from django.contrib.auth import views 
 from django.conf.urls import include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns 
 from django.conf import settings 
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
-#from login import apiViews
 
-#router = routers.DefaultRouter() 
-#router.register(r'choice', apiViews.ChoiceViewSet)
+
 urlpatterns = [
     path('', RedirectView.as_view(url="/jobs/view")),
     path('admin/', admin.site.urls),
@@ -33,7 +30,3 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls'))   
 ] 
 
-"""
-url(r'^api/', include(router.urls))
-    url(r'^api/', include('rest_framework.urls', namespace='rest_framework')) 
-"""
