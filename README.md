@@ -50,3 +50,5 @@
  You can also include css, imgs and javascript by including it in the folder static inside each app
 
  Feel free to get comfortable and play around with the code 
+ 
+ #NB: One small bug : You have to manually rename login folder to Login before running localhost 
