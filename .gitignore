@@ -1,2 +1,4 @@
 .env
 Login/__pycache__/*
+.vscode
+djangodev
