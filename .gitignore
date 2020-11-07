@@ -1,5 +1,7 @@
 .env
 Login/__pycache__/*
+.vscode
+djangodev
 JobTracker/__pycache__/__init__.cpython-38.pyc
 JobTracker/__pycache__/__init__.cpython-38.pyc
 JobTracker/__pycache__/__init__.cpython-38.pyc
