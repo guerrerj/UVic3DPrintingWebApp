@@ -15,12 +15,15 @@
             UVic 3D Printing Navigator
         </title>
         <center>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #03169D;">
+                <!--<nav class="navbar navbar-light" style="background-color: #03169D;">-->
+                <a class="navbar-brand" href="{% url 'about' %}" style="color:#EEE500; padding-right:10px; font-weight: bold">3D Printing UVic</a>
                    <div class="row">
                         <div class="nav navbar-nav">
-                            <a class="navbar-link" href="{% url 'create' %}"> Create Job
-                            <a class="navbar-link" href="{% url 'view' %}">View Jobs
-                            <a class="navbar-link" href="{% url 'about' %}">About
+                            <a style="padding:10px; color:#66b3ff" class="navbar-link"  href="{% url 'create' %}">Create Job</a>
+                            <a style="padding:10px; color:#66b3ff" class="navbar-link" href="{% url 'view' %}">View Jobs</a>
+                            <a style="padding:10px; color:#66b3ff" class="navbar-link" href="{% url 'about' %}">About</a>
+                            <a style="padding:10px; color:#66b3ff" class="navbar-link" id="Navbutton" href="{% url 'admin:index' %}">Admin</a>
                         </div>
                     </div>
             </nav>
@@ -28,20 +31,22 @@
     </div>
   </head>  
   <body>    
-        {% block pageContent %}
-        {% endblock %}
-    </body>
-    <footer>
-        <div class="container footer">
-            <div class="row">
-                <div class="col-12 md-4">
-                    This is team 2!
+        <div style="position: relative; min-height: 100vh; padding-bottom:2.5rem"><!--Content Wrap-->
+            {% block pageContent %}
+            {% endblock %}
+        </div>
+  </body>
+        <footer style="position: absolute; bottom: 0; width: 100%; height: 2.5rem">
+            <div class="container footer">
+                <div class="row">
+                    <div class="col-12 md-4">
+                        This is team 2!
+                    </div>
+                </div>
+                <div class="row">
+                    <p>CopyRight@2020</p>
                 </div>
             </div>
-            <div class="row">
-                <p>CopyRight@2020</p>
-            </div>
-        </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
