@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="{% static 'JobTracker/app.css' %}"
      <div class="jumbotron">
         <title>
             UVic 3D Printing Navigator
@@ -30,7 +30,7 @@
         </center>
     </div>
   </head>  
-  <body>    
+  <body class="bodyContent">    
         <div style="position: relative; min-height: 100vh; padding-bottom:2.5rem"><!--Content Wrap-->
             {% block pageContent %}
             {% endblock %}

@@ -19,8 +19,7 @@ from django.contrib.auth import views
 from django.conf.urls import include
 from django.conf import settings 
 from django.views.generic import RedirectView
-
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', RedirectView.as_view(url="/jobs/view")),
@@ -29,6 +28,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),   
     re_path(r'^.*/$', RedirectView.as_view(permanent=False, url="/"))
 ] 
+
 
 
 if settings.DEBUG:
