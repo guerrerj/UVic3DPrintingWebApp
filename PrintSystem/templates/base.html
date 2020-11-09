@@ -20,31 +20,28 @@
                             <a style="padding:10px; color:#66b3ff" class="navbar-link" href="{% url 'about' %}">About</a>
                             <a style="padding:10px; color:#66b3ff" class="navbar-link" id="Navbutton" href="{% url 'admin:index' %}">Admin</a>
                             <!--UVic Logo--><!--https://dataverse.scholarsportal.info/logos/71619/UVicLogo.jpg--><!--https://www.uvic.ca/brand/assets/images/graphics/misc/UVic-mark.jpg-->
-                            <a class="navbar-link" href="https://www.uvic.ca/"><img style="margin-left:758%; width: 124px;" src="https://dataverse.scholarsportal.info/logos/71619/UVicLogo.jpg"></a>
+                            <a class="navbar-link" href="https://www.uvic.ca/"><img style="margin-left:785%; width: 124px;" src="https://dataverse.scholarsportal.info/logos/71619/UVicLogo.jpg"></a>
                         </div>
                     </div>
             </nav>
         </center>
     <!--</div>-->
     <body>
-    <div style="position: relative; min-height: 100vh"><!--Page Container-->
-        <div style="padding-bottom:2.5rem"><!--Content Wrap-->
+    <!--<div style="position: relative; min-height: 100vh">--><!--Page Container-->
+        <!--<div style="padding-bottom:2.5rem">--><!--Content Wrap-->
             {% block pageContent %}
             {% endblock %}
-        </div>
-        <footer style="position: absolute; bottom: 0; width: 100%; height: 2.5rem">
-            <div class="container footer">
+        <!--</div>-->
+        <footer style="position: absolute; bottom: 0; width: 100%; background-color: #03169D">
+            <!--<div class="container footer">-->
                 <div class="row">
-                    <div class="col-12 md-4">
-                        This is team 2!
+                    <div class="col-12">
+                        <p style="color:#66b3ff; padding: 4px; text-align: center">ECE 356 Team Project<br>CopyRight@2020</p>
                     </div>
                 </div>
-                <div class="row">
-                    <p>CopyRight@2020</p>
-                </div>
-            </div>
+            <!--</div>-->
         </footer>   
-    </div>
+    <!--</div>-->
     </body>
  
 </html>

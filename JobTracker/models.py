@@ -11,6 +11,7 @@ class Jobs(models.Model):
     paymentCompleted = models.BooleanField(default=False)
     fileName         = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=100)
     jobDetails       = models.TextField()
+    #jobTitle         = models.TextField(max_length=30)
     
     class Meta:
         """ Allows to define metadata for the database """

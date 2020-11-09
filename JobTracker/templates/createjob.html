@@ -9,19 +9,21 @@
         <div class="col">
             <h2 style = "position:relative; left:10px;"> 3D Print Request Form </h2>
             <form class="form-inline">
-                <h5 style = "position:relative; left:10px; top:12px">Project Title:</h5>
+                <h5 style = "position:relative; left:10px; top:12px">Project Title</h5>
                 <input type="text" class="form-control mb-2 mr-sm-2 ml-4 mt-4" placeholder="Type project title here...">
             </form>
         </div>
     </div>
     <div class="row mt-2">
         <div class="col">
-            <h5 style = "position:relative; left:10px; top:12px">STL File:</h5>
-        <form action="." method="post">
-            {% bootstrap_form form %}
-            {% csrf_token %}
-            {% buttons %}
-            <button type="submit" class="btn btn-outline-primary">Submit</button>
-            {% endbuttons %}
-        </form>
+            <h5 style = "position:relative; left:10px; top:12px">STL File</h5>
+            <form action="." method="post">
+                {% bootstrap_form form %}
+                {% csrf_token %}
+                {% buttons %}
+                <button type="submit" class="btn btn-warning" style="margin-left:8px">Submit</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
 {% endblock %}
