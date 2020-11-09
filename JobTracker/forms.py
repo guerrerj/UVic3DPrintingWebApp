@@ -7,7 +7,7 @@ class JobForm(ModelForm):
     class Meta:
         model = Job
         verbose_name = "Job List"
-        fields = ["fileName", "jobDetails"]
+        fields = ["projectTitle", "fileName", "jobDetails"]
 
 
 class CustomSignupForm(SignupForm):

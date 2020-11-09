@@ -27,8 +27,10 @@ class Job(models.Model):
     dateRequested    = models.DateTimeField(auto_now=False, auto_now_add=True)
     jobCompleted     = models.BooleanField(default=False)
     paymentCompleted = models.BooleanField(default=False)
-    fileName         = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=100)
-    jobDetails       = models.TextField()
+    projectTitle     = models.CharField(max_length=50, verbose_name="Project Title", default="")
+    fileName         = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=100, verbose_name="STL File")
+    jobDetails       = models.TextField(verbose_name="Job Details")
+    
     
     class Meta:
         """ Allows to define metadata for the database """
