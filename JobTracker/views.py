@@ -8,7 +8,9 @@ from django.views.generic import ListView, CreateView
 
 from .models import Job, CustomUser
 from .forms import JobForm
-
+"""
+from .models import Author
+"""
 
 class AboutView(TemplateView):
     template_name = "about.html"
@@ -33,3 +35,22 @@ class JobsCreateView(CreateView):
     template_name = "createjob.html"
     context_object_name = "jobs"
 
+"""
+class AuthorCreate(CreateView):
+    model = Author
+    fields = ['name']
+
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+"""
+def add_job(request):
+    #print(request.POST)
+    projtitle = request.POST["projectTitle"]
+    filnam = request.POST["fileName"]
+    jobdet = request.POST["jobDetails"]
+    created_obj = Job.objects.create(projectTitle=projtitle, fileName=filnam, jobDetails=jobdet, cost=0.00, user=request.user)
+    #print(created_obj)
+    #length_of_jobs = Job.objects.all().count()
+    #print(length_of_jobs)
+    return(render(request, 'viewjobs.html'))

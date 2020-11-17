@@ -2,6 +2,8 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
+from django.contrib.auth.models import User
+
 
 class CustomUser(AbstractUser):    
     userId        = models.AutoField(primary_key=True)
@@ -13,7 +15,11 @@ class CustomUser(AbstractUser):
     class Meta:
         ordering =["-username"]
         verbose_name = 'User'
-    
+"""    
+class Author(models.CustomUser):
+    name = models.CharField(max_length=200)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+"""
     # def __str__(self):
     #     """ Allows admin to view username as objects  """
     #     return self.username
