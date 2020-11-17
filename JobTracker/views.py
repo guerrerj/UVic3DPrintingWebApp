@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from django.views import View 
 from django.views.generic import ListView, CreateView
 
-from .models import Job
+from .models import Job, CustomUser
 from .forms import JobForm
 
 
@@ -15,9 +15,18 @@ class AboutView(TemplateView):
 
 class JobsListView(ListView):
     template_name = "viewjobs.html"
-    context_object_name = "jobs"
-    queryset = Job.objects.all() 
+    context_object_name = "jobs"      
     model = Job 
+    
+    # return only the user's requests if they don't have admin privilege 
+    def get_queryset(self):
+        user = list(CustomUser.objects.filter(username=self.request.user))[0] 
+        # If the user has isAdminUser then return all the requests for viewing 
+        if user.isAdminUser:
+            return  Job.objects.all().order_by('dateRequested')
+        else:
+           return Job.objects.filter(user=self.request.user).order_by('dateRequested')
+    
     
 class JobsCreateView(CreateView):
     form_class = JobForm
