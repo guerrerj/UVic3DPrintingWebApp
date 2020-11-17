@@ -39,7 +39,7 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'guerrerj@uvic.ca'
+DEFAULT_FROM_EMAIL = 'guerrerj@uvic.ca' # Ideally this would be from a uvic owned email 
 
 # Application definition
 #from django.core.mail import send_mail
