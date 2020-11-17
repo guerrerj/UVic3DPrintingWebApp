@@ -40,7 +40,7 @@ class Job(models.Model):
     
     class Meta:
         """ Allows to define metadata for the database """
-        ordering = ["-dateRequested"]
+        ordering = ["dateRequested"]
         db_table = 'Job'
         verbose_name = "Job List"
     

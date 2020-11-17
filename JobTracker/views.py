@@ -25,9 +25,9 @@ class JobsListView(ListView):
         user = list(CustomUser.objects.filter(username=self.request.user))[0] 
         # If the user has isAdminUser then return all the requests for viewing 
         if user.isAdminUser:
-            return  Job.objects.all().order_by('dateRequested')
+            return  Job.objects.all().order_by('-dateRequested')
         else:
-           return Job.objects.filter(user=self.request.user).order_by('dateRequested')
+           return Job.objects.filter(user=self.request.user).order_by('-dateRequested')
     
     
 class JobsCreateView(CreateView):
@@ -53,4 +53,4 @@ def add_job(request):
     #print(created_obj)
     #length_of_jobs = Job.objects.all().count()
     #print(length_of_jobs)
-    return(render(request, 'viewjobs.html'))
+    return(redirect('/jobs/view'))
