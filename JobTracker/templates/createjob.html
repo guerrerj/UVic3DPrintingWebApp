@@ -6,7 +6,7 @@
 
 {% block pageContent %}    
     <div class="container mt-2">        
-        <form action="." method="post">
+        <form action="add_job/" method="post">
             {% bootstrap_form form %}
             {% csrf_token %}
             {% buttons %}
