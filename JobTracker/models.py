@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 from django.contrib.auth.models import User
+from PrintSystem.settings import DEFAULT_FROM_EMAIL
+from django.core.mail import send_mail 
 
 
 class CustomUser(AbstractUser):    
@@ -37,6 +39,18 @@ class Job(models.Model):
     fileName         = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=100, verbose_name="STL File")
     jobDetails       = models.TextField(verbose_name="Job Details")
     
+    def save(self, force_insert=False, force_update=False, *args, **kwargs):
+        if self.pk is not None:
+            orig = Job.objects.get(pk=self.pk)
+            if orig.cost!= self.cost:
+                send_mail(
+                    subject='Your print job from UVIC3D Web app has an associated cost',
+                    message='You owe money for your print job. Please make a payment at the library in order to print.',
+                    from_email=DEFAULT_FROM_EMAIL,
+                    recipient_list=['sahibpandher@yahoo.ca'],
+                    fail_silently=False,
+                )
+        super(Job, self).save()           
     
     class Meta:
         """ Allows to define metadata for the database """
