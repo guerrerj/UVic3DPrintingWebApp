@@ -1,16 +1,17 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% load bootstrap4 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
-{% block pageContent %}
-    <h2> Create Job </h2>
-    <form action="." method="post">
-        {% bootstrap_form form %}
-        {% csrf_token %}
-        {% buttons %}
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
-        {% endbuttons %}
-    </form>
+{% block pageContent %}    
+    <div class="container mt-2">        
+        <form action="add_job/" method="post">
+            {% bootstrap_form form %}
+            {% csrf_token %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% endbuttons %}
+        </form>
+    </div>
 {% endblock %}

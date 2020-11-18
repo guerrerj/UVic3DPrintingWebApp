@@ -36,7 +36,7 @@
  These two files are the ones we will mostly modify
 
 
- The other two folders/apps Login and JobTracker were created with python manage.py startapp appName
+ The folder JobTracker were created with python manage.py startapp appName
  They represent different functionalities of the web app with their associated models(database data) and
  views(apis) and templates(html) 
 
@@ -53,4 +53,4 @@
 
  Feel free to get comfortable and play around with the code 
  
- #NB: One small bug : You have to manually rename login folder to Login before running localhost 
+

@@ -1,0 +1,33 @@
+.mainheader {
+    background-color: #03169D;
+}
+
+.bodyContent{
+    background-color: rgb(35, 215, 228);
+    text-align: left;
+    padding: 1rem 1rem;
+}
+
+
+/* Accounts styling */
+.baseAccount {
+    background-color: rgb(14, 178, 243);
+    text-align: center;   
+}
+
+.card{
+    width: 18rem;
+    margin:auto;
+    margin-bottom: 2rem;
+    background-color: rgba(0, 255, 255, 0.719);
+   
+}
+
+.accountMenu{
+    margin-bottom: 2rem;
+}
+
+.logoutBtn{
+    position: absolute;
+    right: 1rem;
+}

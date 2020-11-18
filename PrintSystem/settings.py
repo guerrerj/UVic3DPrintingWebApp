@@ -32,9 +32,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'guerrerj@uvic.ca' # Ideally this would be from a uvic owned email 
 
 # Application definition
-
+#from django.core.mail import send_mail
+#send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@example.com'], fail_silently=False)
+# use python manage.py shell   --> to be able to use variables in settings.py 
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,10 +52,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Login',
+    'django.contrib.sites',   
+    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    
+    'crispy_forms',    
     'JobTracker',
-    'bootstrap4'
+    'bootstrap4',
 ]
+SITE_ID = 1
+CRISPY_TEMPLATE_PACK = "bootstrap4"
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django amdin, regardless of allauth 
+    'django.contrib.auth.backends.ModelBackend',
+    # allauth specific authentication methods such as login by email 
+    'allauth.account.auth_backends.AuthenticationBackend'    
+)
+ACCOUNT_FORMS = {'signup': 'JobTracker.forms.CustomSignupForm'}
+AUTH_USER_MODEL = 'JobTracker.CustomUser'
+
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 7 
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+LOGIN_REDIRECT_URL = "/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,7 +94,8 @@ ROOT_URLCONF = 'PrintSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['PrintSystem/templates/'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'JobTracker/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,14 +159,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, '/')
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
-
-""" REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'api_authentication.AdminOnlyAuth'
-    )
-} """
+STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+STATICFILES_DIR = [BASE_DIR / 'static']
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
