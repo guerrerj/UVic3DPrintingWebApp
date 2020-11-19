@@ -37,7 +37,7 @@ class Job(models.Model):
     paymentCompleted = models.BooleanField(default=False)
     projectTitle     = models.CharField(max_length=50, verbose_name="Project Title", default="")
     fileName         = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=100, verbose_name="STL File")
-    jobDetails       = models.TextField(verbose_name="Job Details")
+    jobDetails       = models.TextField(verbose_name="Job Details", default="", blank=True)
     
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
         if self.pk is not None:
