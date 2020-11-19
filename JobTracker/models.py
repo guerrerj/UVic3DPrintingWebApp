@@ -43,11 +43,12 @@ class Job(models.Model):
         if self.pk is not None:
             orig = Job.objects.get(pk=self.pk)
             if orig.cost!= self.cost:
+                user = list(CustomUser.objects.filter(username=orig.user))[0]
                 send_mail(
                     subject='Your print job from UVIC3D Web app has an associated cost',
                     message='You owe money for your print job. Please make a payment at the library in order to print.',
                     from_email=DEFAULT_FROM_EMAIL,
-                    recipient_list=['sahibpandher@yahoo.ca'],
+                    recipient_list=[user.email],
                     fail_silently=False,
                 )
         super(Job, self).save()           
