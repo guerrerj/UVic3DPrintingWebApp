@@ -37,3 +37,4 @@ virtualenv==20.0.33
 virtualenvwrapper-win==1.2.6
 whitenoise==5.2.0
 yarl==1.6.2
+psycopg2==2.8.6

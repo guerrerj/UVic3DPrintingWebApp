@@ -110,7 +110,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'PrintSystem.wsgi.application'
-
+SECURE_SSL_REDIRECT = True 
+CSRF_COOKIE_SECURE = True 
+SESSION_COOKIE_SECURE = True 
 hostname = os.environ['DBHOST']
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -169,3 +171,21 @@ STATICFILES_DIR = [BASE_DIR / 'staticfiles']
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': './debug.log',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
