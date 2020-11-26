@@ -30,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["uvic-3dps-2020.herokuapp.com"]
+ALLOWED_HOSTS = ["uvic-3dps-2020.herokuapp.com", "*"]
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
@@ -165,7 +165,7 @@ STATICFILES_DIR = [BASE_DIR / 'static']
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
-#DISABLE_COLLECTSTATIC=1
+DISABLE_COLLECTSTATIC=1
 
 
 # CORS_REPLACE_HTTPS_REFERER      = False
