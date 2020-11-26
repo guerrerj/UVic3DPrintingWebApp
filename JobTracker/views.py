@@ -7,7 +7,7 @@ from django.views import View
 from django.views.generic import ListView, CreateView
 
 from .models import Job, CustomUser
-from .forms import JobForm
+from .forms import JobForm, UpdateJobForm
 """
 from .models import Author
 """
@@ -35,22 +35,60 @@ class JobsCreateView(CreateView):
     template_name = "createjob.html"
     context_object_name = "jobs"
 
-"""
-class AuthorCreate(CreateView):
-    model = Author
-    fields = ['name']
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
-"""
 def add_job(request):
-    #print(request.POST)
     projtitle = request.POST["projectTitle"]
     filnam = request.POST["fileName"]
     jobdet = request.POST["jobDetails"]
     created_obj = Job.objects.create(projectTitle=projtitle, fileName=filnam, jobDetails=jobdet, cost=0.00, user=request.user)
-    #print(created_obj)
-    #length_of_jobs = Job.objects.all().count()
-    #print(length_of_jobs)
+ 
     return(redirect('/jobs/view'))
+
+def update_job(request):
+    """ Meant to update a job with price and payment details """
+    print("In update jobs first")
+    if request.method == "post":
+        form = UpdateJobForm(request.POST)
+        print("Inside update job")
+        if form.is_valid():
+            jobId = form.cleaned_data['jobId']
+            price = form.cleaned_data['price']
+            paymentCompleted = form.cleaned_data['paymentCompleted']
+            jobCompleted = form.cleaned_data['jobCompleted']
+            record = Jobs.objects.filter(jobId=jobId)
+            if record:
+                record.price = price
+                record.paymentCompleted = paymentCompleted
+                record.jobCompleted = jobCompleted 
+                record.save() 
+            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+        else:
+            print("Errors:", form.errors)
+    else:
+        form = UpdateJobForm() 
+        context = {
+            'form': form
+        }
+        return render(request, 'updateJob.html', context)
+
+def update_job2(request):
+    """ Meant to update a job with price and payment details """    
+    if request.method == "POST":
+        form = UpdateJobForm(request.POST)
+        if form.is_valid():
+            jobId = form.cleaned_data['jobId']
+            price = form.cleaned_data['price']
+            paymentCompleted = form.cleaned_data['paymentCompleted']
+            jobCompleted = form.cleaned_data['jobCompleted']
+            record = Jobs.objects.filter(jobId=jobId)
+            if record:
+                record.price = price
+                record.paymentCompleted = paymentCompleted
+                record.jobCompleted = jobCompleted 
+                record.save() 
+            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+        else:
+            print("Errors:", form.errors)
+    
+   
+            

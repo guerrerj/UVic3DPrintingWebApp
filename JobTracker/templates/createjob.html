@@ -1,30 +1,52 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load bootstrap4 %}
+{% load static %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
 {% block pageContent %}    
+    <script src="{% static 'JobTracker/JobTracker.js' %}"></script>
     <div class="container mt-2">        
         <form action="add_job/" method="post">
-            {% bootstrap_form form %}
+            {% crispy form %}
             {% csrf_token %}
             {% buttons %}
             <button type="submit" class="btn btn-primary">Submit</button>
             {% endbuttons %}
-        </form>
-        <p style="font-weight: bold">Need some help?</p><br>
-        <p>In the Job Details textbox above you can specify how you would like your project to be printed.
-        The following are some things you could choose to specify:
-        <ul>
-            <li><span style="text-decoration: underline">Filament colour</span> - Options: Blue, Red, Green, Purple, White, Black, etc. (Some colours may not be available at the time of your print job so it might be good to specify your second or third choice of colour as well).</li>
-            <li><span style="text-decoration: underline">Print settings</span> - Options: Scale, infill density, layer height, shells, rafts and supports preferences</li>
-            <li><span style="text-decoration: underline">Model of 3D Printer</span> - Options: MakerBot® Replicator® (5th Gen), MakerBot® Replicator® +, Ultimaker 3</li>
-            <li><span style="text-decoration: underline">Type of filament</span> - Options: PLA (Polylactic Acid), PVA Dissolving Filament, TPU 95a</li>
-        </ul> 
-        Don't worry if some of the above doesn't make sense, but we encourage you to research the terms you don't understand! 
-        Our default print settings can hanlde most print jobs very well.   
-        If you leave 'Job Details' blank, we will use default settings for your project. 
-        </p>
+        </form>       
+    </div>
+    <div class="container createJobContainer">
+        <h4>Need some help?</h4><br>
+            <p>In the Job Details textbox above you can specify how you would like your project to be printed. <br/>
+                The following are some things you could choose to specify:
+             </p>
+             <div class="row ">
+               <div class="col-12 col-sm-2 mb-1">
+                    <button type="button" class="btn btn-warning" data-html="true" data-toggle="tooltip" data-placement="right" title="<b> Options </b>: Blue, Red, Green, Purple, White, Black, etc. <br/> (Some colours may not be available at the time of your print job so it might be good to specify your second or third choice of colour as well).">
+                        Filament colour
+                    </button> 
+                </div>  
+                <div class="col-12 col-sm-2 mb-1">        
+                    <button type="button" class="btn btn-warning" data-html="true" data-toggle="tooltip" data-placement="right" title="<b> Options </b>: Scale, infill density, layer height, shells, rafts and supports preferences">
+                        Print settings
+                    </button>     
+                 </div>
+                 <div class="col-12 col-sm-3 mb-1">    
+                    <button type="button" class="btn btn-warning" data-html="true" data-toggle="tooltip" data-placement="right" title="<b> Options </b>: MakerBot® Replicator® (5th Gen), MakerBot® Replicator® +, Ultimaker 3">
+                        Model of 3D Printer
+                    </button>
+                  </div>
+                  <div class="col-12 col-sm-2 mb-1">
+                    <button type="button" class="btn btn-warning" data-html="true" data-toggle="tooltip" data-placement="right" title="<b> Options </b>: PLA (Polylactic Acid), PVA Dissolving Filament, TPU 95a">
+                        Type of filament
+                    </button> 
+                  </div>
+            </div>
+            <p>     
+                Don't worry if some of the above doesn't make sense, but we encourage you to research the terms you don't understand! 
+                Our default print settings can hanlde most print jobs very well.   
+                If you leave 'Job Details' blank, we will use default settings for your project. 
+            </p>
     </div>
 {% endblock %}

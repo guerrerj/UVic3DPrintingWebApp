@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load bootstrap4 %}
+{% load static %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% block pageContent %}
+   
+    <div class="container mt-2">      
+     <div class="col-12 col-md-6 mx-auto">   
+        <form action="/jobs/update_job/" method="post">
+            {% crispy form %}
+            {% csrf_token %}
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            {% endbuttons %}
+        </form>     
+        </div>  
+    </div>  
+       {% comment %} <div class="col-12 col-md-6 mx-auto">              
+            <form action="" method="post">
+                {% csrf_token %}
+                {% UpdateJobform %}
+                {% buttons %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                {% endbuttons %}
+            </form>
+        
+        </div>       {% endcomment %}
+ 
+{% endblock %}

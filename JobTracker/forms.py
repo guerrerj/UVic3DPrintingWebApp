@@ -18,3 +18,9 @@ class CustomSignupForm(SignupForm):
         user.save()
         return user 
     
+class UpdateJobForm(forms.Form):    
+    jobId = forms.IntegerField(label="Job ID", min_value=0, required=True)
+    price = forms.DecimalField(label="Estimated Job Cost", min_value=0,decimal_places=2, required=False)
+    paymentCompleted = forms.BooleanField(label="Payment Completed", required=False)
+    jobCompleted = forms.BooleanField(label="Job Completed", required=False)
+    

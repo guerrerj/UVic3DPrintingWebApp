@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["uvic-3dps-2020.herokuapp.com", '*']
+ALLOWED_HOSTS = ["uvic-3dps-2020.herokuapp.com"]
 
 SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
@@ -97,8 +97,7 @@ ROOT_URLCONF = 'PrintSystem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 os.path.join(BASE_DIR, 'JobTracker/templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -172,7 +171,7 @@ MEDIA_URL = '/media/'
 # CORS_REPLACE_HTTPS_REFERER      = False
 # HOST_SCHEME                     = "http://"
 # SECURE_PROXY_SSL_HEADER         = None
-# SECURE_SSL_REDIRECT             = True
+# SECURE_SSL_REDIRECT             = False
 # SESSION_COOKIE_SECURE           = False
 # CSRF_COOKIE_SECURE              = False
 # SECURE_HSTS_SECONDS             = None
@@ -185,3 +184,5 @@ CSRF_COOKIE_SECURE    = True
 
 django_heroku.settings(locals())
 del DATABASES['default']['OPTIONS']['sslmode']
+
+#  Create default admin super user 
