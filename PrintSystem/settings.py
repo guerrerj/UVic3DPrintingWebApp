@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
+import django_heroku
+import dj_database_url
 import os
 
 # Load env file 
@@ -28,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["uvic-3dps-2020.herokuapp.com", '*']
 
@@ -115,15 +117,10 @@ WSGI_APPLICATION = 'PrintSystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-hostname = os.environ['DBHOST']
+db_from_env = dj_database_url.config(conn_max_age=600)
+
 DATABASES = {
-   'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ['DBNAME'],
-        'HOST': hostname + ".postgres.database.azure.com",
-        'USER': os.environ['DBUSER'] + "@" + hostname,
-        'PASSWORD': os.environ['DBPASS'] 
-    }
+    'default': db_from_env
 }
 
 # Password validation
@@ -182,6 +179,9 @@ MEDIA_URL = '/media/'
 # SECURE_HSTS_INCLUDE_SUBDOMAINS  = False
 # SECURE_FRAME_DENY               = False
 
-SECURE_SSL_REDIRECT             = True
-SESSION_COOKIE_SECURE           = True
-CSRF_COOKIE_SECURE              = True
+SECURE_SSL_REDIRECT   = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE    = True
+
+django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
