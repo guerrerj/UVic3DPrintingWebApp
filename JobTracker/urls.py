@@ -11,5 +11,5 @@ urlpatterns = [
     path('create/', login_required(JobsCreateView.as_view()), name="create"),
     url(r'add_job/', login_required(views.add_job)),
     url(r'update_job/', login_required(views.update_job), name="update"),
-    url(r'update_job2/', login_required(views.update_job2))
+   
 ]

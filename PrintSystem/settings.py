@@ -44,9 +44,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'guerrerj@uvic.ca' # Ideally this would be from a uvic owned email 
 
 # Application definition
-#from django.core.mail import send_mail
-#send_mail('Subject here', 'Here is the message.', 'from@example.com', ['to@example.com'], fail_silently=False)
-# use python manage.py shell   --> to be able to use variables in settings.py 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -63,6 +61,7 @@ INSTALLED_APPS = [
     'crispy_forms',    
     'JobTracker',
     'bootstrap4',
+    'payments'
 ]
 SITE_ID = 1
 CRISPY_TEMPLATE_PACK = "bootstrap4"

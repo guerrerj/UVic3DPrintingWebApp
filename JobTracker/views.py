@@ -46,21 +46,18 @@ def add_job(request):
 
 def update_job(request):
     """ Meant to update a job with price and payment details """
-    print("In update jobs first")
-    if request.method == "post":
+    if request.method == "POST":
         form = UpdateJobForm(request.POST)
-        print("Inside update job")
         if form.is_valid():
             jobId = form.cleaned_data['jobId']
             price = form.cleaned_data['price']
             paymentCompleted = form.cleaned_data['paymentCompleted']
             jobCompleted = form.cleaned_data['jobCompleted']
-            record = Jobs.objects.filter(jobId=jobId)
-            if record:
-                record.price = price
-                record.paymentCompleted = paymentCompleted
-                record.jobCompleted = jobCompleted 
-                record.save() 
+            rec = Job.objects.get(pk=jobId)            
+            rec.cost = float(price)
+            rec.paymentCompleted = paymentCompleted
+            rec.jobCompleted = jobCompleted 
+            rec.save() 
             return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
         else:
             print("Errors:", form.errors)
@@ -71,24 +68,6 @@ def update_job(request):
         }
         return render(request, 'updateJob.html', context)
 
-def update_job2(request):
-    """ Meant to update a job with price and payment details """    
-    if request.method == "POST":
-        form = UpdateJobForm(request.POST)
-        if form.is_valid():
-            jobId = form.cleaned_data['jobId']
-            price = form.cleaned_data['price']
-            paymentCompleted = form.cleaned_data['paymentCompleted']
-            jobCompleted = form.cleaned_data['jobCompleted']
-            record = Jobs.objects.filter(jobId=jobId)
-            if record:
-                record.price = price
-                record.paymentCompleted = paymentCompleted
-                record.jobCompleted = jobCompleted 
-                record.save() 
-            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-        else:
-            print("Errors:", form.errors)
-    
+
    
             

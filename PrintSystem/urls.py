@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('jobs/', include('JobTracker.urls')),
     path('accounts/', include('allauth.urls')),   
+    path('payments/', include('payments.urls')),
     re_path(r'^.*/$', RedirectView.as_view(permanent=False, url="/"))
 ] 
 

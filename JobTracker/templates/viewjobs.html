@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block pageContent %}
+{% block pageContent %}   
+    <script src="{% static 'payments.js' %}"></script> 
     <div class="container mainheader">
         <div class="row" style="padding-bottom: 50px;">
            <h3 id="badge">Your List of <span class="badge badge-pill badge-dark">Print Requests</span></h3>
@@ -9,7 +10,7 @@
     </div>
     
     <div class="container" style="border-radius: 24px 24px 0px 0px">
-        <div class="row text-center" style="padding-bottom: 12px; padding-top: 12px;">
+        <div class="row" style="padding-bottom: 12px; padding-top: 12px;">
             <div class="col-md-1">
                 <b>Job Id</b>
             </div>
@@ -22,12 +23,12 @@
             <div class="col-md-1">
                 <b>Cost</b>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <b>Payment Complete</b>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
                 <b>Job Completed</b>
-            </div>
+            </div>            
         </div>
         {% for job in jobs %}
             <div class="row bg-info" style="padding-top: 24px; padding-bottom: 24px; border-top: 10px solid rgb(35, 215, 228);">
@@ -43,12 +44,19 @@
                 <div class="col-md-1">
                     {{job.cost}}
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                     {{job.paymentCompleted}}
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-1">
                     {{job.jobCompleted}}
-                </div>                
+                </div> 
+                <div class="col-md-1">                    
+                    {% if job.paymentCompleted  == False %}      
+                        <button type="button" class="bnt btn-warning"  id="submitPaymentBtn" value={{job.jobId}}>Pay</button>
+                    {% else %}       
+                        <button type="button" class="bnt btn-warning" value="-1" disabled id="submitPaymentBtn">Pay</button>
+                    {% endif %}
+                </div> 
             </div>
         {% endfor %}
     </div>

@@ -8,9 +8,9 @@
 {% block pageContent %}    
     <script src="{% static 'JobTracker/JobTracker.js' %}"></script>
     <div class="container mt-2">        
-        <form action="add_job/" method="post">
-            {% crispy form %}
+        <form action="add_job/" method="post">            
             {% csrf_token %}
+            {{ form|crispy }}
             {% buttons %}
             <button type="submit" class="btn btn-primary">Submit</button>
             {% endbuttons %}
@@ -45,7 +45,7 @@
             </div>
             <p>     
                 Don't worry if some of the above doesn't make sense, but we encourage you to research the terms you don't understand! 
-                Our default print settings can hanlde most print jobs very well.   
+                Our default print settings can handle most print jobs very well.   
                 If you leave 'Job Details' blank, we will use default settings for your project. 
             </p>
     </div>
