@@ -51,7 +51,7 @@
                     {{job.jobCompleted}}
                 </div> 
                 <div class="col-md-1">                    
-                    {% if job.paymentCompleted  == False %}      
+                    {% if job.paymentCompleted  == False and job.cost > 0  %}      
                         <button type="button" class="bnt btn-warning"  id="submitPaymentBtn" value={{job.jobId}}>Pay</button>
                     {% else %}       
                         <button type="button" class="bnt btn-warning" value="-1" disabled id="submitPaymentBtn">Pay</button>

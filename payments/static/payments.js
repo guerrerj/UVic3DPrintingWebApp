@@ -1,4 +1,3 @@
-console.log("Sanity check!");
 // Get Stripe publishable key
 var baseurl = window.location.origin;
 var stripe = {};
@@ -21,7 +20,7 @@ fetch(baseurl + "/payments/config/")
        var jobId = e.target.value;
       
         fetch(baseurl+"/payments/create-checkout-session/" + jobId)
-        .then((result) => { console.log("This is sessionid", result); return result.json(); })
+        .then((result) => { return result.json(); })
         .then((data) => {      
           // Redirect to Stripe Checkout
           return stripe.redirectToCheckout({sessionId: data.sessionId})
