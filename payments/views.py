@@ -22,7 +22,6 @@ def create_checkout_session(request, jobId):
         stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
         try:
             printRequest = Job.objects.get(pk=jobId)            
-            print("This is printRequest", printRequest)             
             checkout_session = stripe.checkout.Session.create(
                 client_reference_id=request.user.userId if request.user.is_authenticated else None,
                 success_url=domain_url + 'payments/success?session_id={CHECKOUT_SESSION_ID}',
@@ -61,19 +60,16 @@ def stripe_webhook(request):
     endpoint_secret = os.getenv('STRIPE_ENDPOINT_SECRET')
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-    event = None
-    print("Inside webhook")
+    event = None   
     try:
         event = stripe.Webhook.construct_event(
             payload, sig_header, endpoint_secret
         )
     except ValueError as e:
         # Invalid payload
-        print("Webhook error", e)
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        print(" webhook error2", e)
         return HttpResponse(status=400)
 
     # Handle the checkout.session.completed event
