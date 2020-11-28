@@ -4,13 +4,26 @@
     text-align: center;
 }
 
+
 .bodyContent{
-    background-color: rgb(35, 215, 228);
     text-align: left;
     padding: 1rem 1rem;
+    background-color: linear-gradient( rgb(35, 96, 228), rgb(35, 215, 228));
 }
 
+.blurBackground{
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    font-weight: bold;
+    border: 3px solid #f1f1f1;    
+    z-index: 2;  
+    margin-top: 2rem;  
+    padding-bottom: 2rem;
+    padding: 
+}
 
+.updatePage{
+    color: white;
+}
 /* Accounts styling */
 .baseAccount {
     background-color: rgb(14, 178, 243);

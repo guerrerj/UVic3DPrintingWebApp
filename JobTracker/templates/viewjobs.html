@@ -5,12 +5,12 @@
     <script src="{% static 'payments.js' %}"></script> 
     <div class="container mainheader">
         <div class="row" style="padding-bottom: 50px;">
-           <h3 id="badge">Your List of <span class="badge badge-pill badge-dark">Print Requests</span></h3>
+           <h3 id="badge" style="color:white;">Your List of <span class="badge badge-pill badge-dark">Print Requests</span></h3>
         </div>      
     </div>
     
     <div class="container" style="border-radius: 24px 24px 0px 0px">
-        <div class="row" style="padding-bottom: 12px; padding-top: 12px;">
+        <div class="row bg-info" style="padding-bottom: 12px; padding-top: 12px;">
             <div class="col-md-1">
                 <b>Job Id</b>
             </div>
@@ -31,7 +31,7 @@
             </div>            
         </div>
         {% for job in jobs %}
-            <div class="row bg-info" style="padding-top: 24px; padding-bottom: 24px; border-top: 10px solid rgb(35, 215, 228);">
+            <div class="row bg-info" style="padding-top: 24px; padding-bottom: 24px; border-top: 2px solid rgb(35, 215, 228);">
                 <div class="col-md-1">
                     {{job.jobId}}
                 </div>

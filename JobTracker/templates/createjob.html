@@ -7,7 +7,7 @@
 
 {% block pageContent %}    
     <script src="{% static 'JobTracker/JobTracker.js' %}"></script>
-    <div class="container mt-2">        
+    <div class="container mt-2 updatePage">        
         <form action="add_job/" method="post">            
             {% csrf_token %}
             {{ form|crispy }}

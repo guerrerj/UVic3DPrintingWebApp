@@ -53,14 +53,22 @@ def update_job(request):
             price = form.cleaned_data['price']
             paymentCompleted = form.cleaned_data['paymentCompleted']
             jobCompleted = form.cleaned_data['jobCompleted']
-            rec = Job.objects.get(pk=jobId)            
-            rec.cost = float(price)
-            rec.paymentCompleted = paymentCompleted
-            rec.jobCompleted = jobCompleted 
-            rec.save() 
-            return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
-        else:
-            print("Errors:", form.errors)
+            try:
+                rec = Job.objects.get(pk=jobId)   
+                if rec:  
+                    if price:       
+                        rec.cost = float(price)
+                    rec.paymentCompleted = paymentCompleted
+                    rec.jobCompleted = jobCompleted 
+                    rec.save() 
+                return redirect(request.META.get('HTTP_REFERER', 'redirect_if_referer_not_found'))
+            except:
+                context = {
+                    'form': form
+                }
+                return render(request, 'updateJob.html', context)
+           
+      
     else:
         form = UpdateJobForm() 
         context = {
