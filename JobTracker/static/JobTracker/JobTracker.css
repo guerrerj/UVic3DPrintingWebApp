@@ -7,9 +7,18 @@
 
 .bodyContent{
     text-align: left;
-    padding: 1rem 1rem;
     background-color: linear-gradient( rgb(35, 96, 228), rgb(35, 215, 228));
+    min-height: 700px;
+
 }
+
+.bodyContent1{
+    text-align: left;
+    padding: 1rem 1rem;
+    background-color:  rgb(35, 215, 228);
+
+}
+
 
 .blurBackground{
     background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
