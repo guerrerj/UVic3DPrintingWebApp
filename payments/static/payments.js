@@ -31,6 +31,7 @@ fetch(baseurl + "/payments/config/")
     stickyNav,{
       root:null,
       threshold: 0, // percentage we want visible in the view port with the current target 
+      rootMargin: '50px'
     }
   );
   headerObserver.observe(header); 
