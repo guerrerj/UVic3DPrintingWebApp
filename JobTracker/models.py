@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 from PrintSystem.settings import DEFAULT_FROM_EMAIL
 from django.core.mail import send_mail 
+from .validators import validateFileExtension
 
 
 class CustomUser(AbstractUser):    
@@ -36,7 +37,7 @@ class Job(models.Model):
     jobCompleted     = models.BooleanField(default=False)
     paymentCompleted = models.BooleanField(default=False)
     projectTitle     = models.CharField(max_length=50, verbose_name="Project Title", default="")
-    fileName         = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=100, verbose_name="STL File")
+    fileName         = models.FileField(upload_to='uploads/%Y/%m/%d/', max_length=100, verbose_name="STL File", validators=[validateFileExtension])
     jobDetails       = models.TextField(verbose_name="Job Details", default="", blank=True)
     
     def save(self, force_insert=False, force_update=False, *args, **kwargs):
